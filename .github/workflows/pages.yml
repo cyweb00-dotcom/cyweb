@@ -1,8 +1,9 @@
 # Publishes the site to GitHub Pages on every push to main.
 #
-# `enablement: true` is the important part: it turns Pages on using the
-# workflow's own token, so the whole thing is set up by this file rather than
-# by hand in the repository settings.
+# Pages has to be switched on once by hand first:
+#   Settings -> Pages -> Build and deployment -> Source: GitHub Actions
+# A workflow cannot turn it on for this repository, so there is no point
+# trying — it just fails the run.
 name: Deploy site
 
 on:
@@ -30,8 +31,6 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       # The site is a static file — there is nothing to build.
       - uses: actions/upload-pages-artifact@v3
